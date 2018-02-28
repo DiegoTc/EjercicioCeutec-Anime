@@ -51,8 +51,18 @@ public class Anime {
             lea.nextLine();
             System.out.println("Ingrese nombre del Anime");
             nombreanime = lea.nextLine();
-            System.out.println("Ingrese horario del Anime ---  (<inicio-fin>)||<16-20>");
-            horarioanime = lea.nextLine();
+            boolean timevalidation= false;
+            do{
+                System.out.println("Ingrese horario del Anime ---  (<inicio-fin>)||<16:00-20:00>");
+                horarioanime = lea.nextLine();
+                timevalidation = horarioanime.matches("\\d{2}:\\d{2}-\\d{2}:\\d{2}");
+                if(timevalidation== false){
+                    System.out.println("Formato Incorrecto ---  (<inicio-fin>)||<16:45-20:45>");
+                }
+                else{
+                    
+                }
+            }while(timevalidation == false);
             System.out.println("Ingrese Estudio creadora del anime");          
             estudio = lea.nextLine();
             Animes anime = new Animes(nombreanime, horarioanime, estudio);
@@ -63,13 +73,18 @@ public class Anime {
         }
 
     }
-
+    
+    public boolean matches(String regex){
+        return true;
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         int opcion = 0;
-        String horario = "16-av";
+        System.out.println("\\");
+        String horario = "16-dd";
         boolean a;
-        a = horario.matches("^\\d{2}-\\d{2}$");
+        a = horario.matches("\\d{2}-\\d{2}");
         do {
             try {
                 System.out.println("Menu");
